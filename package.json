@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ncc build src/index.ts",
     "lint": "eslint . --ignore-pattern='!.eslintrc.js' --ext .ts,.js",
-    "test": ""
+    "test": "echo no tests yet"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,20 @@
   "author": "Side",
   "license": "MIT",
   "private": false,
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",
     "@side/commitlint-config": "0.1.1",
