@@ -22,11 +22,14 @@ async function getVersion(): Promise<string> {
     'package.json',
   );
 
+  core.debug(`Reading ${packagePath}...`);
+
   const { version } = await readJson(packagePath);
   if (!version) {
     throw new Error(`Missing "version" in ${packagePath}`);
   }
 
+  core.info(`Found version ${version} in ${packagePath}`);
   return version;
 }
 
@@ -36,7 +39,7 @@ async function getVersion(): Promise<string> {
 async function run(): Promise<void> {
   if (!tagFormat.includes(REQUIRED_TAG_FORMAT)) {
     throw new Error(
-      `tag-format is missing require "${REQUIRED_TAG_FORMAT}" pattern`,
+      `tag-format is missing required "${REQUIRED_TAG_FORMAT}" pattern`,
     );
   }
 
@@ -49,10 +52,10 @@ async function run(): Promise<void> {
   }
 
   if (tags.has(tagName)) {
-    throw new Error(`Tag "${tagName} already exists in ${cloneUrl}.`);
+    throw new Error(`Tag "${tagName}" already exists in ${cloneUrl}.`);
   }
 
-  core.info(`Tag "${tagName} is available to use.`);
+  core.info(`Tag "${tagName}" is available to use.`);
 }
 
 /**
