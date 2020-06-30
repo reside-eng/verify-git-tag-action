@@ -1,7 +1,5 @@
 import { join } from 'path';
 import fse from 'fs-extra';
-// TODO: Add TS support to our lint rules
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as exec from '@actions/exec';
 
 const autPath = join(process.cwd(), 'aut');
