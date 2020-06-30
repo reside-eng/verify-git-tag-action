@@ -1266,6 +1266,99 @@ module.exports = require("child_process");
 
 /***/ }),
 
+/***/ 131:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const path_1 = __webpack_require__(622);
+const fs_extra_1 = __webpack_require__(226);
+const core = __importStar(__webpack_require__(470));
+const github = __importStar(__webpack_require__(861));
+const remote_git_tags_1 = __importDefault(__webpack_require__(665));
+const REQUIRED_TAG_FORMAT = '$version';
+/**
+ * Gets the version from a package.json file.
+ *
+ * @returns version of the code
+ */
+async function getVersion() {
+    const packagePath = path_1.join(process.env.GITHUB_WORKSPACE || '', core.getInput('package-directory'), 'package.json');
+    core.debug(`Reading ${packagePath}...`);
+    const { version } = await fs_extra_1.readJson(packagePath);
+    if (!version) {
+        throw new Error(`Missing "version" in ${packagePath}`);
+    }
+    core.info(`Found version ${version} in ${packagePath}`);
+    return version;
+}
+/**
+ * Logs an error and fails the Github Action
+ *
+ * @param err Any possible errors
+ */
+function handleError(err) {
+    console.error(err);
+    core.setFailed(err.message);
+}
+/**
+ * Action run pipeline
+ */
+async function pipeline() {
+    var _a;
+    // eslint-disable-next-line camelcase
+    const cloneUrl = (_a = github.context.payload.repository) === null || _a === void 0 ? void 0 : _a.clone_url;
+    const tagFormat = core.getInput('tag-format');
+    if (!tagFormat.includes(REQUIRED_TAG_FORMAT)) {
+        console.log('ERROR!');
+        throw new Error(`tag-format is missing required "${REQUIRED_TAG_FORMAT}" pattern`);
+    }
+    const version = await getVersion();
+    const tags = await remote_git_tags_1.default(cloneUrl);
+    const tagName = tagFormat.replace('$version', version);
+    if (core.isDebug()) {
+        console.log('Available remote tags:\n', tags.keys());
+    }
+    if (tags.has(tagName)) {
+        throw new Error(`Tag "${tagName}" already exists in ${cloneUrl}.`);
+    }
+    core.info(`Tag "${tagName}" is available to use.`);
+}
+/**
+ * Main function to execute the Github Action
+ */
+async function run() {
+    process.on('unhandledRejection', handleError);
+    await pipeline().catch(handleError);
+}
+exports.default = run;
+
+
+/***/ }),
+
 /***/ 141:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -2691,83 +2784,12 @@ isStream.transform = function (stream) {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-const path_1 = __webpack_require__(622);
-const fs_extra_1 = __webpack_require__(226);
-const core = __importStar(__webpack_require__(470));
-const github = __importStar(__webpack_require__(861));
-const remote_git_tags_1 = __importDefault(__webpack_require__(665));
-const REQUIRED_TAG_FORMAT = '$version';
-// eslint-disable-next-line camelcase
-const cloneUrl = (_a = github.context.payload.repository) === null || _a === void 0 ? void 0 : _a.clone_url;
-const tagFormat = core.getInput('tag-format');
-/**
- * Gets the version from a package.json file.
- *
- * @returns version of the code
- */
-async function getVersion() {
-    const packagePath = path_1.join(process.env.GITHUB_WORKSPACE || '', core.getInput('package-directory'), 'package.json');
-    core.debug(`Reading ${packagePath}...`);
-    const { version } = await fs_extra_1.readJson(packagePath);
-    if (!version) {
-        throw new Error(`Missing "version" in ${packagePath}`);
-    }
-    core.info(`Found version ${version} in ${packagePath}`);
-    return version;
-}
-/**
- * Main function to execute the Github Action
- */
-async function run() {
-    if (!tagFormat.includes(REQUIRED_TAG_FORMAT)) {
-        throw new Error(`tag-format is missing required "${REQUIRED_TAG_FORMAT}" pattern`);
-    }
-    const version = await getVersion();
-    const tags = await remote_git_tags_1.default(cloneUrl);
-    const tagName = tagFormat.replace('$version', version);
-    if (core.isDebug()) {
-        console.log('Available remote tags:\n', tags.keys());
-    }
-    if (tags.has(tagName)) {
-        throw new Error(`Tag "${tagName}" already exists in ${cloneUrl}.`);
-    }
-    core.info(`Tag "${tagName}" is available to use.`);
-}
-/**
- * Logs an error and fails the Github Action
- *
- * @param err Any possible errors
- */
-function handleError(err) {
-    console.error(err);
-    core.setFailed(err.message);
-}
-process.on('unhandledRejection', handleError);
-run().catch(handleError);
+const main_1 = __importDefault(__webpack_require__(131));
+main_1.default();
 
 
 /***/ }),

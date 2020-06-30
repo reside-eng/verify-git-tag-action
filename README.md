@@ -9,10 +9,8 @@ Github Action for verifying if a Git tag exists in the remote origin of the clon
 ```yaml
 - uses: reside-eng/verify-git-tag-version@v1
   with:
-    # The directory where to find the package.json file to retrieve the version
-    # whichis used in association with tag-format.
-    #
-    # [Learn more about creating and using secrets](https://help.github.com/en/actions)
+    # The directory where to find the package.json file to retrieve the version which
+    # is used in association with tag-format.
     #
     # Default: ./
     package-directory: ''

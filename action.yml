@@ -3,9 +3,7 @@ description: 'Verify if a Git tag exists in a target repository'
 inputs:
   package-directory:
     description: >
-      The directory where to find the package.json file to retrieve the version whichis used in association with tag-format.
-
-      [Learn more about creating and using secrets](https://help.github.com/en/actions)
+      The directory where to find the package.json file to retrieve the version which is used in association with tag-format.
     default: './'
   tag-format:
     description: >
