@@ -24,6 +24,22 @@ Github Action for verifying if a Git tag exists in the remote origin of the clon
 ```
 <!-- end usage -->
 
+# Local Development
+
+## Testing
+
+To run your tests in watch mode, open up one terminal and run:
+
+```sh
+yarn tsc --watch
+```
+
+And in a second terminal, start up your tests in watch mode:
+
+```sh
+yarn test --watch
+```
+
 # License
 
 The scripts and documentation in this project are released under the [MIT License](LICENSE).
