@@ -63,7 +63,7 @@
     "typescript": "3.9.5"
   },
   "dependencies": {
-    "@actions/core": "1.2.4",
+    "@actions/core": "1.2.6",
     "@actions/github": "4.0.0",
     "fs-extra": "9.0.1",
     "remote-git-tags": "3.0.0"
