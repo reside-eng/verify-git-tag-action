@@ -53,9 +53,7 @@ jobs:
           yarn lint
 
       - name: Test
-        run: |
-          yarn test --coverage --silent
-
-      - uses: codecov/codecov-action@v1
+        uses: raulanatol/jest-coverage-comment-action@v1.0.6
         with:
-          fail_ci_if_error: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          jest-command: yarn test --coverage --silent
