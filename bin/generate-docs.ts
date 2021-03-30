@@ -37,7 +37,7 @@ function updateUsage(
     throw new Error('Parameter actionReference must not be empty');
   }
 
-  const actionYaml = yaml.safeLoad(
+  const actionYaml = yaml.load(
     fs.readFileSync(actionYamlPath, 'utf-8').toString(),
   ) as ActionsConfig;
 
