@@ -7,6 +7,7 @@
     "node": ">=10.15.0"
   },
   "scripts": {
+    "prepare": "husky install",
     "build": "rimraf dist && ncc build src/index.ts && ts-node bin/generate-docs.ts",
     "lint": "eslint . --ignore-pattern='!.eslintrc.js' --ext .ts,.js",
     "test": "yarn tsc && jest"
@@ -52,7 +53,7 @@
     "@zeit/ncc": "0.22.3",
     "eslint": "7.3.1",
     "eslint-plugin-jsdoc": "28.5.1",
-    "husky": "4.2.5",
+    "husky": "6.0.0",
     "jest": "26.1.0",
     "js-yaml": "3.14.0",
     "lint-staged": "10.2.11",
