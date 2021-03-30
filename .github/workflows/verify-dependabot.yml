@@ -22,7 +22,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 2 # NOTE: Required for codecov action to correctly upload coverage
 
       - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
         uses: actions/setup-node@v1
@@ -55,8 +54,7 @@ jobs:
         run: yarn lint
 
       - name: Test
-        run: yarn test --coverage --silent
-
-      - uses: codecov/codecov-action@v1
+        uses: raulanatol/jest-coverage-comment-action@v1.0.6
         with:
-          fail_ci_if_error: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          jest-command: yarn test --coverage --silent
