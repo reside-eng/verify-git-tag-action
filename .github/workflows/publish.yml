@@ -47,16 +47,13 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Dependencies
-        run: |
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Lint
-        run: |
-          yarn lint
+        run: yarn lint
 
       - name: Test
-        run: |
-          yarn test --coverage --silent
+        run: yarn test --coverage --silent
 
       - uses: codecov/codecov-action@v1
         with:
