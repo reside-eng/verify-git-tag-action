@@ -1,24 +1,25 @@
-name: Publish Action
+name: Verify (dependabot)
 
 on:
-  push:
+  pull_request_target:
     branches:
       - master
-      - next
-      - alpha
-      - beta
-      # N.x (maintenance release branches)
-      - '[0-9]+.x'
 
 jobs:
   build:
-    name: Release
+    name: Build and Test
     runs-on: ${{ matrix.os }}
+    if: github.actor == 'dependabot[bot]'
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [12.x]
+        node-version: [10.x, 12.x]
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.0
+        with:
+          access_token: ${{ github.token }}
+
       - name: Checkout Code
         uses: actions/checkout@v2
 
@@ -30,7 +31,7 @@ jobs:
       - name: Configure Package Manager
         run: |
           echo Configuring NPM_READ_TOKEN globally for .npmrc
-          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_PUBLISH_TOKEN }}
+          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_READ_TOKEN }}
           npm whoami
 
       - name: Get yarn cache directory path
@@ -61,20 +62,3 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
-
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
-        id: semantic
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Push updates to branch for major version
-        # If a new version is published, i.e. v1.2.3 then this step will update
-        # branch "v1" to this commit.
-        # https://github.com/reside-eng/verify-git-tag-action/branches
-        if: steps.semantic.outputs.new_release_published == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}
