@@ -24,12 +24,6 @@
   "author": "Side",
   "license": "MIT",
   "private": false,
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged && yarn build && git add dist && git add README.md"
-    }
-  },
   "lint-staged": {
     "*.{json,md}": [
       "prettier --write"
