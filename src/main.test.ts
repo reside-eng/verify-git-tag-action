@@ -36,10 +36,11 @@ describe('@reside-eng/verify-git-tag-action', () => {
     // All tests will work under the AUT directory
     process.env.GITHUB_WORKSPACE = join(process.cwd(), 'aut');
 
-    mockCore.getInput.mockImplementation((name: string): string => {
-      // console.log('name:', name);
-      return mock.inputs[name] || '';
-    });
+    mockCore.getInput.mockImplementation(
+      (name: string): string =>
+        // console.log('name:', name);
+        mock.inputs[name] || '',
+    );
 
     // Setting to this Github repo by default
     (github.context.payload.repository as Partial<PayloadRepository>) = {
