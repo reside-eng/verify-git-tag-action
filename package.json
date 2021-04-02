@@ -36,7 +36,7 @@
     "@actions/exec": "1.0.4",
     "@commitlint/cli": "12.1.1",
     "@side/commitlint-config": "0.1.4",
-    "@side/eslint-config-base": "0.10.0",
+    "@side/eslint-config-base": "0.11.2",
     "@side/eslint-config-jest": "0.2.1",
     "@types/fs-extra": "9.0.9",
     "@types/jest": "26.0.22",
