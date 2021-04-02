@@ -711,6 +711,55 @@ function whichSync (cmd, opt) {
 
 /***/ }),
 
+/***/ 78:
+/***/ (function(module) {
+
+"use strict";
+
+const alias = ['stdin', 'stdout', 'stderr'];
+
+const hasAlias = opts => alias.some(x => Boolean(opts[x]));
+
+module.exports = opts => {
+	if (!opts) {
+		return null;
+	}
+
+	if (opts.stdio && hasAlias(opts)) {
+		throw new Error(`It's not possible to provide \`stdio\` in combination with one of ${alias.map(x => `\`${x}\``).join(', ')}`);
+	}
+
+	if (typeof opts.stdio === 'string') {
+		return opts.stdio;
+	}
+
+	const stdio = opts.stdio || [];
+
+	if (!Array.isArray(stdio)) {
+		throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof stdio}\``);
+	}
+
+	const result = [];
+	const len = Math.max(stdio.length, alias.length);
+
+	for (let i = 0; i < len; i++) {
+		let value = null;
+
+		if (stdio[i] !== undefined) {
+			value = stdio[i];
+		} else if (opts[alias[i]] !== undefined) {
+			value = opts[alias[i]];
+		}
+
+		result[i] = value;
+	}
+
+	return result;
+};
+
+
+/***/ }),
+
 /***/ 82:
 /***/ (function(__unusedmodule, exports) {
 
@@ -1348,7 +1397,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -1841,50 +1890,32 @@ module.exports = r => {
 /***/ }),
 
 /***/ 168:
-/***/ (function(module) {
+/***/ (function(__unusedmodule, exports) {
 
 "use strict";
 
-const alias = ['stdin', 'stdout', 'stderr'];
 
-const hasAlias = opts => alias.some(x => Boolean(opts[x]));
+exports.fromCallback = function (fn) {
+  return Object.defineProperty(function (...args) {
+    if (typeof args[args.length - 1] === 'function') fn.apply(this, args)
+    else {
+      return new Promise((resolve, reject) => {
+        fn.apply(
+          this,
+          args.concat([(err, res) => err ? reject(err) : resolve(res)])
+        )
+      })
+    }
+  }, 'name', { value: fn.name })
+}
 
-module.exports = opts => {
-	if (!opts) {
-		return null;
-	}
-
-	if (opts.stdio && hasAlias(opts)) {
-		throw new Error(`It's not possible to provide \`stdio\` in combination with one of ${alias.map(x => `\`${x}\``).join(', ')}`);
-	}
-
-	if (typeof opts.stdio === 'string') {
-		return opts.stdio;
-	}
-
-	const stdio = opts.stdio || [];
-
-	if (!Array.isArray(stdio)) {
-		throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof stdio}\``);
-	}
-
-	const result = [];
-	const len = Math.max(stdio.length, alias.length);
-
-	for (let i = 0; i < len; i++) {
-		let value = null;
-
-		if (stdio[i] !== undefined) {
-			value = stdio[i];
-		} else if (opts[alias[i]] !== undefined) {
-			value = opts[alias[i]];
-		}
-
-		result[i] = value;
-	}
-
-	return result;
-};
+exports.fromPromise = function (fn) {
+  return Object.defineProperty(function (...args) {
+    const cb = args[args.length - 1]
+    if (typeof cb !== 'function') return fn.apply(this, args)
+    else fn.apply(this, args.slice(0, -1)).then(r => cb(null, r), cb)
+  }, 'name', { value: fn.name })
+}
 
 
 /***/ }),
@@ -9465,7 +9496,7 @@ try {
 } catch (_) {
   _fs = __webpack_require__(747)
 }
-const universalify = __webpack_require__(676)
+const universalify = __webpack_require__(168)
 const { stringify, stripBom } = __webpack_require__(356)
 
 async function _readFile (file, options = {}) {
@@ -9569,9 +9600,10 @@ exports.fromCallback = function (fn) {
     if (typeof args[args.length - 1] === 'function') fn.apply(this, args)
     else {
       return new Promise((resolve, reject) => {
-        fn.apply(
+        fn.call(
           this,
-          args.concat([(err, res) => err ? reject(err) : resolve(res)])
+          ...args,
+          (err, res) => (err != null) ? reject(err) : resolve(res)
         )
       })
     }
@@ -11539,6 +11571,7 @@ const api = [
   'readlink',
   'realpath',
   'rename',
+  'rm',
   'rmdir',
   'stat',
   'symlink',
@@ -11549,6 +11582,7 @@ const api = [
 ].filter(key => {
   // Some commands are not available on some systems. Ex:
   // fs.opendir was added in Node.js v12.12.0
+  // fs.rm was added in Node.js v14.14.0
   // fs.lchown is not available on at least some Linux
   return typeof fs[key] === 'function'
 })
@@ -12201,7 +12235,7 @@ const _getStream = __webpack_require__(145);
 const pFinally = __webpack_require__(697);
 const onExit = __webpack_require__(260);
 const errname = __webpack_require__(427);
-const stdio = __webpack_require__(168);
+const stdio = __webpack_require__(78);
 
 const TEN_MEGABYTES = 1000 * 1000 * 10;
 
