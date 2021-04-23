@@ -4,7 +4,7 @@
   "description": "Github Action for verifying if a Git tag exists in a target repository",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10.15.0"
+    "node": ">=14"
   },
   "scripts": {
     "prepare": "husky install",
@@ -36,17 +36,18 @@
     "@actions/exec": "1.0.4",
     "@commitlint/cli": "12.1.1",
     "@side/commitlint-config": "0.1.4",
-    "@side/eslint-config-base": "0.11.2",
-    "@side/eslint-config-jest": "0.2.1",
+    "@side/eslint-config-base": "0.11.3",
+    "@side/eslint-config-jest": "0.3.8",
+    "@tsconfig/node14": "1.0.0",
     "@types/fs-extra": "9.0.11",
     "@types/jest": "26.0.22",
-    "@types/js-yaml": "4.0.0",
+    "@types/js-yaml": "4.0.1",
     "@types/node": "14.14.41",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "@zeit/ncc": "0.22.3",
     "eslint": "7.24.0",
-    "eslint-plugin-jsdoc": "32.3.0",
+    "eslint-plugin-jsdoc": "32.3.1",
     "husky": "6.0.0",
     "jest": "26.6.3",
     "js-yaml": "4.1.0",
