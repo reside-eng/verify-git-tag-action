@@ -40,7 +40,7 @@
     "@side/eslint-config-jest": "0.3.8",
     "@tsconfig/node14": "1.0.0",
     "@types/fs-extra": "9.0.11",
-    "@types/jest": "26.0.22",
+    "@types/jest": "26.0.23",
     "@types/js-yaml": "4.0.1",
     "@types/node": "14.14.41",
     "@typescript-eslint/eslint-plugin": "4.22.0",
