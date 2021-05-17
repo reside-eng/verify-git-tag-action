@@ -61,7 +61,7 @@
   "dependencies": {
     "@actions/core": "1.2.7",
     "@actions/github": "4.0.0",
-    "fs-extra": "9.1.0",
+    "fs-extra": "10.0.0",
     "remote-git-tags": "3.0.0"
   }
 }
