@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "4.24.0",
     "@typescript-eslint/parser": "4.23.0",
     "@vercel/ncc": "0.28.5",
-    "eslint": "7.26.0",
+    "eslint": "7.27.0",
     "eslint-plugin-jsdoc": "34.6.3",
     "husky": "6.0.0",
     "jest": "26.6.3",
@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@actions/core": "1.2.7",
-    "@actions/github": "4.0.0",
+    "@actions/github": "5.0.0",
     "fs-extra": "10.0.0",
     "remote-git-tags": "3.0.0"
   }
