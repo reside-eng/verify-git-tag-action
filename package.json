@@ -62,6 +62,6 @@
     "@actions/core": "1.4.0",
     "@actions/github": "5.0.0",
     "fs-extra": "10.0.0",
-    "remote-git-tags": "3.0.0"
+    "remote-git-tags": "4.0.0"
   }
 }
