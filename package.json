@@ -42,7 +42,7 @@
     "@types/fs-extra": "9.0.12",
     "@types/jest": "27.0.0",
     "@types/js-yaml": "4.0.2",
-    "@types/node": "16.6.0",
+    "@types/node": "16.6.1",
     "@typescript-eslint/eslint-plugin": "4.29.1",
     "@typescript-eslint/parser": "4.29.1",
     "@vercel/ncc": "0.29.0",
