@@ -12893,6 +12893,113 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 6144:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const main_1 = __importDefault(__nccwpck_require__(399));
+(0, main_1.default)();
+
+
+/***/ }),
+
+/***/ 399:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const path_1 = __nccwpck_require__(5622);
+const fs_extra_1 = __nccwpck_require__(5630);
+const core = __importStar(__nccwpck_require__(2186));
+const github = __importStar(__nccwpck_require__(5438));
+const remote_git_tags_1 = __importDefault(__nccwpck_require__(1951));
+const REQUIRED_TAG_FORMAT = '$version';
+/**
+ * Gets the version from a package.json file.
+ *
+ * @returns version of the code
+ */
+async function getVersion() {
+    const packagePath = (0, path_1.join)(process.env.GITHUB_WORKSPACE || '', core.getInput('package-directory'), 'package.json');
+    core.debug(`Reading ${packagePath}...`);
+    const { version } = await (0, fs_extra_1.readJson)(packagePath);
+    if (!version) {
+        throw new Error(`Missing "version" in ${packagePath}`);
+    }
+    core.info(`Found version ${version} in ${packagePath}`);
+    return version;
+}
+/**
+ * Logs an error and fails the Github Action
+ *
+ * @param err Any possible errors
+ */
+function handleError(err) {
+    console.error(err);
+    core.setFailed(err.message);
+}
+/**
+ * Action run pipeline
+ */
+async function pipeline() {
+    // eslint-disable-next-line camelcase
+    const cloneUrl = github.context.payload.repository?.clone_url;
+    const tagFormat = core.getInput('tag-format');
+    if (!tagFormat.includes(REQUIRED_TAG_FORMAT)) {
+        console.log('ERROR!');
+        throw new Error(`tag-format is missing required "${REQUIRED_TAG_FORMAT}" pattern`);
+    }
+    const version = await getVersion();
+    const tags = await (0, remote_git_tags_1.default)(cloneUrl);
+    const tagName = tagFormat.replace('$version', version);
+    if (core.isDebug()) {
+        console.log('Available remote tags:\n', tags.keys());
+    }
+    if (tags.has(tagName)) {
+        throw new Error(`Tag "${tagName}" already exists in ${cloneUrl}.`);
+    }
+    core.info(`Tag "${tagName}" is available to use.`);
+}
+/**
+ * Main function to execute the Github Action
+ */
+async function run() {
+    process.on('unhandledRejection', handleError);
+    await pipeline().catch(handleError);
+}
+exports.default = run;
+
+
+/***/ }),
+
 /***/ 2877:
 /***/ ((module) => {
 
@@ -13054,136 +13161,17 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nccwpck_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__nccwpck_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-// ESM COMPAT FLAG
-__nccwpck_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(5622);
-// EXTERNAL MODULE: ./node_modules/fs-extra/lib/index.js
-var lib = __nccwpck_require__(5630);
-// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
-var core = __nccwpck_require__(2186);
-// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
-var github = __nccwpck_require__(5438);
-// EXTERNAL MODULE: ./node_modules/remote-git-tags/index.js
-var remote_git_tags = __nccwpck_require__(1951);
-var remote_git_tags_default = /*#__PURE__*/__nccwpck_require__.n(remote_git_tags);
-;// CONCATENATED MODULE: ./src/main.ts
-
-
-
-
-
-const REQUIRED_TAG_FORMAT = '$version';
-/**
- * Gets the version from a package.json file.
- *
- * @returns version of the code
- */
-async function getVersion() {
-    const packagePath = (0,external_path_.join)(process.env.GITHUB_WORKSPACE || '', core.getInput('package-directory'), 'package.json');
-    core.debug(`Reading ${packagePath}...`);
-    const { version } = await (0,lib.readJson)(packagePath);
-    if (!version) {
-        throw new Error(`Missing "version" in ${packagePath}`);
-    }
-    core.info(`Found version ${version} in ${packagePath}`);
-    return version;
-}
-/**
- * Logs an error and fails the Github Action
- *
- * @param err Any possible errors
- */
-function handleError(err) {
-    console.error(err);
-    core.setFailed(err.message);
-}
-/**
- * Action run pipeline
- */
-async function pipeline() {
-    // eslint-disable-next-line camelcase
-    const cloneUrl = github.context.payload.repository.clone_url;
-    const tagFormat = core.getInput('tag-format');
-    if (!tagFormat.includes(REQUIRED_TAG_FORMAT)) {
-        console.log('ERROR!');
-        throw new Error(`tag-format is missing required "${REQUIRED_TAG_FORMAT}" pattern`);
-    }
-    const version = await getVersion();
-    const tags = await remote_git_tags_default()(cloneUrl);
-    const tagName = tagFormat.replace('$version', version);
-    if (core.isDebug()) {
-        console.log('Available remote tags:\n', tags.keys());
-    }
-    if (tags.has(tagName)) {
-        throw new Error(`Tag "${tagName}" already exists in ${cloneUrl}.`);
-    }
-    core.info(`Tag "${tagName}" is available to use.`);
-}
-/**
- * Main function to execute the Github Action
- */
-async function run() {
-    process.on('unhandledRejection', handleError);
-    await pipeline().catch(handleError);
-}
-
-;// CONCATENATED MODULE: ./src/index.ts
-
-run();
-
-})();
-
-module.exports = __webpack_exports__;
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __nccwpck_require__(6144);
+/******/ 	module.exports = __webpack_exports__;
+/******/ 	
 /******/ })()
 ;
