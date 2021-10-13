@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@actions/exec": "1.1.0",
-    "@commitlint/cli": "13.2.0",
+    "@commitlint/cli": "13.2.1",
     "@side/commitlint-config": "0.1.6",
     "@side/eslint-config-base": "0.12.0",
     "@side/eslint-config-jest": "0.3.11",
@@ -42,7 +42,7 @@
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.0.2",
     "@types/js-yaml": "4.0.3",
-    "@types/node": "16.10.3",
+    "@types/node": "16.10.8",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "@vercel/ncc": "0.31.1",
