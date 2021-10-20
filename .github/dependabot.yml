@@ -4,7 +4,11 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    schedule: 
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+    schedule:
       interval: "daily"
     assignees:
       - "reside-eng/platform"

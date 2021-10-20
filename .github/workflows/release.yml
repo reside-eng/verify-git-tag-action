@@ -1,25 +1,26 @@
-name: Publish Action
+name: Release
 
 on:
   push:
     branches:
-      - master
+      - main
       - next
+      - next-major
       - alpha
       - beta
       # N.x (maintenance release branches)
       - '[0-9]+.x'
 
 jobs:
-  build:
-    name: Release
+  publish:
+    name: publish
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
         node-version: [14.x]
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2.3.5
 
       - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
@@ -28,13 +29,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
 
-      - name: Configure Package Manager
+      - name: Configure package manager
         run: |
-          echo Configuring NPM_READ_TOKEN globally for .npmrc
-          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_PUBLISH_TOKEN }}
+          echo Configuring NPM_TOKEN globally for .npmrc
+          npm config set '//registry.npmjs.org/:_authToken' ${{ env.NPM_TOKEN }}
           npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Lint
@@ -50,9 +53,18 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         id: semantic
+        with:
+          branches: |
+            [
+              '+([0-9])?(.{+([0-9]),x}).x',
+              'main',
+              'next',
+              'next-major',
+              {name: 'beta', prerelease: true},
+              {name: 'alpha', prerelease: true}
+            ]
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Push updates to branch for major version
         # If a new version is published, i.e. v1.2.3 then this step will update

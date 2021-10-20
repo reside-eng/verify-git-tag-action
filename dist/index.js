@@ -9449,17 +9449,29 @@ module.exports = pump
 
 /***/ }),
 
-/***/ 1951:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 6606:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
+// ESM COMPAT FLAG
+__nccwpck_require__.r(__webpack_exports__);
 
-const {promisify} = __nccwpck_require__(1669);
-const childProcess = __nccwpck_require__(3129);
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ remoteGitTags)
+});
 
-const execFile = promisify(childProcess.execFile);
+;// CONCATENATED MODULE: external "node:util"
+const external_node_util_namespaceObject = require("node:util");
+;// CONCATENATED MODULE: external "node:child_process"
+const external_node_child_process_namespaceObject = require("node:child_process");
+;// CONCATENATED MODULE: ./node_modules/remote-git-tags/index.js
 
-module.exports = async repoUrl => {
+
+
+const execFile = (0,external_node_util_namespaceObject.promisify)(external_node_child_process_namespaceObject.execFile);
+
+async function remoteGitTags(repoUrl) {
 	const {stdout} = await execFile('git', ['ls-remote', '--tags', repoUrl]);
 	const tags = new Map();
 
@@ -9469,13 +9481,13 @@ module.exports = async repoUrl => {
 		// Strip off the indicator of dereferenced tags so we can override the
 		// previous entry which points at the tag hash and not the commit hash
 		// `refs/tags/v9.6.0^{}` → `v9.6.0`
-		const tagName = tagReference.replace(/^refs\/tags\//, '').replace(/\^\{\}$/, '');
+		const tagName = tagReference.replace(/^refs\/tags\//, '').replace(/\^{}$/, '');
 
 		tags.set(tagName, hash);
 	}
 
 	return tags;
-};
+}
 
 
 /***/ }),
@@ -12940,7 +12952,7 @@ const path_1 = __nccwpck_require__(5622);
 const fs_extra_1 = __nccwpck_require__(5630);
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
-const remote_git_tags_1 = __importDefault(__nccwpck_require__(1951));
+const remote_git_tags_1 = __importDefault(__nccwpck_require__(6606));
 const REQUIRED_TAG_FORMAT = '$version';
 /**
  * Gets the version from a package.json file.
@@ -13161,6 +13173,34 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
