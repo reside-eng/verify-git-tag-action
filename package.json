@@ -4,7 +4,7 @@
   "description": "Github Action for verifying if a Git tag exists in a target repository",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=14"
+    "node": "^14.13.1 || >=16.0.0"
   },
   "scripts": {
     "prepare": "husky install",
