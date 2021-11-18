@@ -1076,12 +1076,12 @@
     eslint-plugin-import "2.25.2"
     glob "7.2.0"
 
-"@side/eslint-config-jest@0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-jest/-/eslint-config-jest-0.3.12.tgz#41bdd30ac2971de07f605c1fc489bfde394f7e40"
-  integrity sha512-2beSf3VFKcvRy0bYF3aLWjnqUaA8entJ3G6r8jU9sYGH/IZnXy13rlkzM0NeP7peU7l7nhnogsSFjuktOQB3pw==
+"@side/eslint-config-jest@0.3.15":
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-jest/-/eslint-config-jest-0.3.15.tgz#7fe4b24abd74d9fd698f41e2863c55e5722db0c0"
+  integrity sha512-6mjL8m7wIBvedV2DS44oIqqgK59c7zPhaLBor+obzcpB2nuz26XOk21oADx4UovqzqywXKYC2ZE4GcCtZ4/6UA==
   dependencies:
-    eslint-plugin-jest "25.2.2"
+    eslint-plugin-jest "^25.2.4"
 
 "@side/eslint-config-prettier@0.4.6":
   version "0.4.6"
@@ -2305,10 +2305,10 @@ eslint-plugin-import@2.25.2:
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
 
-eslint-plugin-jest@25.2.2:
-  version "25.2.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.2.tgz#aada85113268e79d4e7423f8ad4e1b740f112e71"
-  integrity sha512-frn5yhOF60U4kcqozO3zKTNZQUk+mfx037XOy2iiYL8FhorEkuCuL3/flzKcY1ECDP2WYT9ydmvlO3fRW9o4mg==
+eslint-plugin-jest@^25.2.4:
+  version "25.2.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-25.2.4.tgz#bb9f6a0bd1fd524ffb0b8b7a159cd70a58a1a793"
+  integrity sha512-HRyinpgmEdkVr7pNPaYPHCoGqEzpgk79X8pg/xCeoAdurbyQjntJQ4pTzHl7BiVEBlam/F1Qsn+Dk0HtJO7Aaw==
   dependencies:
     "@typescript-eslint/experimental-utils" "^5.0.0"
 
