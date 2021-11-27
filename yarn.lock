@@ -1066,15 +1066,15 @@
   dependencies:
     "@commitlint/config-conventional" "13.2.0"
 
-"@side/eslint-config-base@0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-0.12.1.tgz#7eed3d9fb0e3208a06a01fb227001f9f14306e30"
-  integrity sha512-WJ66lRk3tutbs38TjtqYL5/vkVeByo9AnGgGUekztpDoshGtP5oOsdlA2VoS7ecsz+ahBFvEUjZX8jOMaxM4HQ==
+"@side/eslint-config-base@0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-0.12.2.tgz#571f46f6da96dc7fe3021a1e451f94441145c3c1"
+  integrity sha512-EZVWlWkkEqEwatPsmX4soaV5/0uyHKFLvSSgKH4/89f/N4KozixeDbckuJEhN6PR2KnPb8+pogl/Pwx5xRj+qA==
   dependencies:
-    "@side/eslint-config-prettier" "0.4.6"
-    eslint-config-airbnb-base "14.2.1"
-    eslint-plugin-import "2.25.2"
-    glob "7.2.0"
+    "@side/eslint-config-prettier" "0.4.7"
+    eslint-config-airbnb-base "^14.2.1"
+    eslint-plugin-import "^2.25.2"
+    glob "^7.2.0"
 
 "@side/eslint-config-jest@0.3.15":
   version "0.3.15"
@@ -1083,13 +1083,13 @@
   dependencies:
     eslint-plugin-jest "^25.2.4"
 
-"@side/eslint-config-prettier@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-prettier/-/eslint-config-prettier-0.4.6.tgz#31db68c1e903bb28c0b5f0221203bde2a0ce0cf4"
-  integrity sha512-p0VwvrkVdsaqJ5Z3S+5U/SpemzvATo7t3EETk1wa2HD33mEjSrCcqpLcaeGqjnokw8ohcKWldI/yZE/BgGUU2A==
+"@side/eslint-config-prettier@0.4.7":
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-prettier/-/eslint-config-prettier-0.4.7.tgz#779401d11307db12367582cea537c6a00e74ad27"
+  integrity sha512-kO9qF1n8ow9rO5tm5HTTFH4sOxhRC59lZVILzlwwubqO+fmNMvewmXrJVv31fE2gWMJhaagzh+ff9ieRDPEOtw==
   dependencies:
-    eslint-config-prettier "8.3.0"
-    eslint-plugin-prettier "4.0.0"
+    eslint-config-prettier "^8.3.0"
+    eslint-plugin-prettier "^4.0.0"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.0"
@@ -2255,7 +2255,7 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-airbnb-base@14.2.1:
+eslint-config-airbnb-base@^14.2.1:
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.2.1.tgz#8a2eb38455dc5a312550193b319cdaeef042cd1e"
   integrity sha512-GOrQyDtVEc1Xy20U7vsB2yAoB4nBlfH5HZJeatRXHleO+OS5Ot+MWij4Dpltw4/DyIkqUfqz1epfhVR5XWWQPA==
@@ -2264,7 +2264,7 @@ eslint-config-airbnb-base@14.2.1:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
-eslint-config-prettier@8.3.0:
+eslint-config-prettier@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.3.0.tgz#f7471b20b6fe8a9a9254cc684454202886a2dd7a"
   integrity sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==
@@ -2277,7 +2277,7 @@ eslint-import-resolver-node@^0.3.6:
     debug "^3.2.7"
     resolve "^1.20.0"
 
-eslint-module-utils@^2.7.0:
+eslint-module-utils@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.7.1.tgz#b435001c9f8dd4ab7f6d0efcae4b9696d4c24b7c"
   integrity sha512-fjoetBXQZq2tSTWZ9yWVl2KuFrTZZH3V+9iD1V1RfpDgxzJR+mPd/KZmMiA8gbPqdBzpNiEHOuT7IYEWxrH0zQ==
@@ -2286,19 +2286,19 @@ eslint-module-utils@^2.7.0:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@2.25.2:
-  version "2.25.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.2.tgz#b3b9160efddb702fc1636659e71ba1d10adbe9e9"
-  integrity sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==
+eslint-plugin-import@^2.25.2:
+  version "2.25.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.3.tgz#a554b5f66e08fb4f6dc99221866e57cfff824766"
+  integrity sha512-RzAVbby+72IB3iOEL8clzPLzL3wpDrlwjsTBAQXgyp5SeTqqY+0bFubwuo+y/HLhNZcXV4XqTBO4LGsfyHIDXg==
   dependencies:
     array-includes "^3.1.4"
     array.prototype.flat "^1.2.5"
     debug "^2.6.9"
     doctrine "^2.1.0"
     eslint-import-resolver-node "^0.3.6"
-    eslint-module-utils "^2.7.0"
+    eslint-module-utils "^2.7.1"
     has "^1.0.3"
-    is-core-module "^2.7.0"
+    is-core-module "^2.8.0"
     is-glob "^4.0.3"
     minimatch "^3.0.4"
     object.values "^1.1.5"
@@ -2327,7 +2327,7 @@ eslint-plugin-jsdoc@36.1.1:
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
 
-eslint-plugin-prettier@4.0.0:
+eslint-plugin-prettier@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-4.0.0.tgz#8b99d1e4b8b24a762472b4567992023619cb98e0"
   integrity sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==
@@ -2716,7 +2716,7 @@ glob-parent@^5.1.0, glob-parent@^5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
-glob@7.2.0, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4:
+glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
@@ -2989,7 +2989,7 @@ is-core-module@^2.5.0:
   dependencies:
     has "^1.0.3"
 
-is-core-module@^2.7.0:
+is-core-module@^2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.0.tgz#0321336c3d0925e497fd97f5d95cb114a5ccd548"
   integrity sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==
