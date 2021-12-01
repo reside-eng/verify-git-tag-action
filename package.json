@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@actions/exec": "1.1.0",
-    "@commitlint/cli": "13.2.1",
+    "@commitlint/cli": "15.0.0",
     "@side/commitlint-config": "0.1.9",
     "@side/eslint-config-base": "0.12.2",
     "@side/eslint-config-jest": "0.3.15",
@@ -52,7 +52,7 @@
     "jest": "27.4.3",
     "js-yaml": "4.1.0",
     "lint-staged": "12.1.2",
-    "prettier": "2.4.1",
+    "prettier": "2.5.0",
     "rimraf": "3.0.2",
     "ts-jest": "27.0.7",
     "ts-node": "10.4.0",
