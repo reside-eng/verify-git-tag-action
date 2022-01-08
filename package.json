@@ -3,34 +3,17 @@
   "version": "0.0.0-development",
   "description": "Github Action for verifying if a Git tag exists in a target repository",
   "main": "dist/index.js",
-  "engines": {
-    "node": "^14.13.1 || >=16.0.0"
-  },
   "scripts": {
     "prepare": "husky install",
     "build": "rimraf dist && ncc build src/index.ts && ts-node bin/generate-docs.ts",
     "lint": "eslint . --ignore-pattern='!.eslintrc.js' --ext .ts,.js",
     "test": "yarn tsc && jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reside-eng/verify-git-tag-action"
-  },
-  "keywords": [
-    "actions",
-    "git",
-    "git tag"
-  ],
-  "author": "Side",
-  "license": "MIT",
-  "private": false,
-  "lint-staged": {
-    "*.{json,md}": [
-      "prettier --write"
-    ],
-    "*.{js,ts}": [
-      "eslint --fix"
-    ]
+  "dependencies": {
+    "@actions/core": "1.6.0",
+    "@actions/github": "5.0.0",
+    "fs-extra": "10.0.0",
+    "remote-git-tags": "3.0.0"
   },
   "devDependencies": {
     "@actions/exec": "1.1.0",
@@ -38,11 +21,11 @@
     "@side/commitlint-config": "0.1.10",
     "@side/eslint-config-base": "0.12.2",
     "@side/eslint-config-jest": "0.3.15",
-    "@tsconfig/node14": "1.0.1",
+    "@tsconfig/node16": "1.0.1",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.0.3",
     "@types/js-yaml": "4.0.5",
-    "@types/node": "16.11.17",
+    "@types/node": "16.11.19",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "@vercel/ncc": "0.33.1",
@@ -58,10 +41,27 @@
     "ts-node": "10.4.0",
     "typescript": "4.5.4"
   },
-  "dependencies": {
-    "@actions/core": "1.6.0",
-    "@actions/github": "5.0.0",
-    "fs-extra": "10.0.0",
-    "remote-git-tags": "3.0.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reside-eng/verify-git-tag-action"
+  },
+  "keywords": [
+    "actions",
+    "git",
+    "git tag"
+  ],
+  "author": "Side",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "lint-staged": {
+    "*.{json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   }
 }

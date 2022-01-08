@@ -11,22 +11,21 @@ on:
       # N.x (maintenance release branches)
       - '[0-9]+.x'
 
+env:
+  NODE_VERSION: 16.x
+
 jobs:
   publish:
     name: publish
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [14.x]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.4.0
 
-      - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v2.5.1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
 
       - name: Configure package manager

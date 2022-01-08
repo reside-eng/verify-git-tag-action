@@ -11,14 +11,18 @@ updates:
     schedule:
       interval: "daily"
     assignees:
-      - "reside-eng/platform"
+      - "reside-eng/platform-tools"
     reviewers:
-      - "reside-eng/platform"
+      - "reside-eng/platform-tools"
+    ignore:
+      # Skip to match with Node 16 LTS
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     assignees:
-      - "reside-eng/platform"
+      - "reside-eng/platform-tools"
     reviewers:
-      - "reside-eng/platform"
+      - "reside-eng/platform-tools"
