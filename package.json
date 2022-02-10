@@ -8,9 +8,11 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build": "rimraf dist && ncc build src/index.ts && ts-node bin/generate-docs.ts",
+    "build": "rimraf dist && ncc build src/index.ts && ts-node bin/generate-docs.ts && prettier --write README.md",
     "lint": "eslint . --ignore-pattern='!.eslintrc.js' --ext .ts,.js",
-    "test": "yarn tsc && jest"
+    "test": "yarn tsc && jest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,11 @@
   "license": "MIT",
   "private": false,
   "lint-staged": {
-    "*.{json,md}": [
-      "prettier --write"
-    ],
     "*.{js,ts}": [
       "eslint --fix"
+    ],
+    "*.{js,jsx,ts,tsx,yaml,yml,json,html,css,md}": [
+      "prettier --write"
     ]
   },
   "devDependencies": {
@@ -38,6 +40,7 @@
     "@side/commitlint-config": "0.1.10",
     "@side/eslint-config-base": "0.13.3",
     "@side/eslint-config-jest": "0.3.15",
+    "@side/prettier-config": "^0.0.0",
     "@tsconfig/node14": "1.0.1",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.4.0",
@@ -47,6 +50,7 @@
     "@typescript-eslint/parser": "4.33.0",
     "@vercel/ncc": "0.33.1",
     "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsdoc": "37.6.3",
     "husky": "7.0.4",
     "jest": "27.4.7",
@@ -63,5 +67,6 @@
     "@actions/github": "5.0.0",
     "fs-extra": "10.0.0",
     "remote-git-tags": "3.0.0"
-  }
+  },
+  "prettier": "@side/prettier-config"
 }

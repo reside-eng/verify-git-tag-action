@@ -72,7 +72,7 @@ async function pipeline() {
 /**
  * Main function to execute the Github Action
  */
-export default async function run(): Promise<void> {
+export async function run(): Promise<void> {
   process.on('unhandledRejection', handleError);
   await pipeline().catch(handleError);
 }

@@ -2,23 +2,23 @@
 # https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     commit-message:
       prefix: fix
       prefix-development: chore
       include: scope
     schedule:
-      interval: "daily"
+      interval: 'daily'
     assignees:
-      - "reside-eng/platform"
+      - 'reside-eng/platform'
     reviewers:
-      - "reside-eng/platform"
-  - package-ecosystem: "github-actions"
-    directory: "/"
+      - 'reside-eng/platform'
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "daily"
+      interval: 'daily'
     assignees:
-      - "reside-eng/platform"
+      - 'reside-eng/platform'
     reviewers:
-      - "reside-eng/platform"
+      - 'reside-eng/platform'
