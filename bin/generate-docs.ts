@@ -118,7 +118,7 @@ function updateUsage(
 
     if (input.default || input.required) {
       // Append blank line if default or required are set
-      newReadme.push(`    #`);
+      newReadme.push('    #');
     }
 
     if (input.default) {

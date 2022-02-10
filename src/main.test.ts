@@ -3,7 +3,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import fse from 'fs-extra';
 import { PayloadRepository } from '@actions/github/lib/interfaces';
-import run from './main';
+import { run } from './main';
 
 jest.mock('@actions/core');
 jest.mock('@actions/github');
@@ -123,7 +123,7 @@ describe('@reside-eng/verify-git-tag-action', () => {
       await run();
 
       expect(mockCore.info).toHaveBeenCalledWith(
-        `Tag "ima-0.0.0-integration-test-custom" is available to use.`,
+        'Tag "ima-0.0.0-integration-test-custom" is available to use.',
       );
       expect(mockCore.setFailed).toHaveBeenCalledTimes(0);
     });
