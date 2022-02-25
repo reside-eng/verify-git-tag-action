@@ -17,3 +17,6 @@ coverage
 
 # Ignore built TS files
 lib
+
+# Ignore built files (added using force before push to major version branch)
+dist
