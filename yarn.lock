@@ -1244,7 +1244,7 @@
   dependencies:
     eslint-plugin-jest "^26.0.0"
 
-"@side/prettier-config@^0.0.0":
+"@side/prettier-config@0.0.0":
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@side/prettier-config/-/prettier-config-0.0.0.tgz#8a28e3202bc5b4038afce5c9f59c30d05e78b69d"
   integrity sha512-Vbwxtr7PkQrx5lNny4pI+4m+yIw++GIQJy7osk/PO+U4yIrWiEWpEha5baAQNDMEGqcndqAngmIsoAwvqJso5A==
