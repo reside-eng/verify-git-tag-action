@@ -4,7 +4,7 @@
   "description": "Github Action for verifying if a Git tag exists in a target repository",
   "main": "dist/index.js",
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "prepare": "husky install",
@@ -15,25 +15,11 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reside-eng/verify-git-tag-action"
-  },
-  "keywords": [
-    "actions",
-    "git",
-    "git tag"
-  ],
-  "author": "Side",
-  "license": "MIT",
-  "private": false,
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix"
-    ],
-    "*.{js,jsx,ts,tsx,yaml,yml,json,html,css,md}": [
-      "prettier --write"
-    ]
+  "dependencies": {
+    "@actions/core": "1.6.0",
+    "@actions/github": "5.0.0",
+    "fs-extra": "10.0.0",
+    "remote-git-tags": "3.0.0"
   },
   "devDependencies": {
     "@actions/exec": "1.1.0",
@@ -42,7 +28,7 @@
     "@side/eslint-config-base": "0.13.3",
     "@side/eslint-config-jest": "0.3.16",
     "@side/prettier-config": "0.0.0",
-    "@tsconfig/node14": "1.0.1",
+    "@tsconfig/node16": "1.0.2",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.4.1",
     "@types/js-yaml": "4.0.5",
@@ -63,11 +49,25 @@
     "ts-node": "10.4.0",
     "typescript": "4.5.5"
   },
-  "dependencies": {
-    "@actions/core": "1.6.0",
-    "@actions/github": "5.0.0",
-    "fs-extra": "10.0.0",
-    "remote-git-tags": "3.0.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reside-eng/verify-git-tag-action"
+  },
+  "keywords": [
+    "actions",
+    "git",
+    "git tag"
+  ],
+  "author": "Side",
+  "license": "MIT",
+  "private": false,
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ],
+    "*.{js,jsx,ts,tsx,yaml,yml,json,html,css,md}": [
+      "prettier --write"
+    ]
   },
   "prettier": "@side/prettier-config"
 }
