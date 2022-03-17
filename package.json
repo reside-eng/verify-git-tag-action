@@ -22,7 +22,7 @@
     "remote-git-tags": "3.0.0"
   },
   "devDependencies": {
-    "@actions/exec": "1.1.0",
+    "@actions/exec": "1.1.1",
     "@commitlint/cli": "16.2.3",
     "@side/commitlint-config": "0.1.10",
     "@side/eslint-config-base": "0.13.3",
