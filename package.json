@@ -25,7 +25,7 @@
     "@actions/exec": "1.1.1",
     "@commitlint/cli": "16.2.3",
     "@side/commitlint-config": "0.1.10",
-    "@side/eslint-config-base": "0.13.4",
+    "@side/eslint-config-base": "0.13.5",
     "@side/eslint-config-jest": "0.3.16",
     "@side/prettier-config": "0.0.0",
     "@tsconfig/node16": "1.0.2",
