@@ -855,21 +855,23 @@
   dependencies:
     "@commitlint/config-conventional" "^16.0.0"
 
-"@side/eslint-config-base@0.13.5":
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-0.13.5.tgz#79db3082a4242a03ac00747999062a2795532ce4"
-  integrity sha512-M0SY00kdvOv3VXznRqX/sFSmF+zsYUsK3ESJLOvnpN3+0kRTZ/abS//VhOJNEH2+2f2aUlF996ARYNxVoGV4yA==
+"@side/eslint-config-base@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-0.14.0.tgz#6a9f361743e7c3dab89ab12462d6c009ec2dd86b"
+  integrity sha512-mL5Fmb5UgirnsUGC9ooftOoIdcF1gtWy9suf4YuFC7mEaGOv/IGnwo97e+N0Jv1QAOvC0HHQ85fyFOfhS6OOYQ==
   dependencies:
     eslint-config-airbnb-base "^15.0.0"
     eslint-plugin-import "^2.25.2"
     glob "^7.2.0"
 
-"@side/eslint-config-jest@0.3.16":
-  version "0.3.16"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-jest/-/eslint-config-jest-0.3.16.tgz#74a426a2760ce18126b7cc0114a089681b279132"
-  integrity sha512-+QwCOsslmv+tHzkGfV5AjUyrbJC9n9Mj+YaUJvPT+jma5Ygayt6R1BoKARIFCNYJ3mdfQ6GMzfYiuqJHk6uyhQ==
+"@side/eslint-config-jest@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-jest/-/eslint-config-jest-0.4.0.tgz#f6f56d0c60e480f08620b30430b5b661cafd690e"
+  integrity sha512-00T6Wnh0s9mDn2k1pKCuixUEw2yCPPMq9eq7G4sacmELN7EblUYsx+AlEAdCA0yn1VQC1vEEFcdAHofaFDXcqQ==
   dependencies:
     eslint-plugin-jest "^26.0.0"
+  optionalDependencies:
+    eslint-plugin-testing-library ">=5.3.0"
 
 "@side/prettier-config@0.0.0":
   version "0.0.0"
@@ -1137,7 +1139,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.20.0":
+"@typescript-eslint/utils@5.20.0", "@typescript-eslint/utils@^5.13.0":
   version "5.20.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.20.0.tgz#b8e959ed11eca1b2d5414e12417fd94cae3517a5"
   integrity sha512-lHONGJL1LIO12Ujyx8L8xKbwWSkoUKFSO+0wDAqGXiudWB2EO7WEUT+YZLtVbmOmSllAjLb9tpoIPwpRe5Tn6w==
@@ -2077,6 +2079,13 @@ eslint-plugin-jsdoc@38.1.6:
     regextras "^0.8.0"
     semver "^7.3.5"
     spdx-expression-parse "^3.0.1"
+
+eslint-plugin-testing-library@>=5.3.0:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.3.1.tgz#7638ee79cc86fd8bb57d671af35a1cbaa77e9548"
+  integrity sha512-OfF4dlG/q6ck6DL3P8Z0FPdK0dU5K57gsBu7eUcaVbwYKaNzjgejnXiM9CCUevppORkvfek+9D3Uj/9ZZ8Vz8g==
+  dependencies:
+    "@typescript-eslint/utils" "^5.13.0"
 
 eslint-scope@^5.1.1:
   version "5.1.1"
