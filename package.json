@@ -24,7 +24,7 @@
   "devDependencies": {
     "@actions/exec": "1.1.1",
     "@commitlint/cli": "16.3.0",
-    "@side/commitlint-config": "0.1.10",
+    "@side/commitlint-config": "0.1.11",
     "@side/eslint-config-base": "0.14.0",
     "@side/eslint-config-jest": "0.4.0",
     "@side/prettier-config": "0.0.0",
