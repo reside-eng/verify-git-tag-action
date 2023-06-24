@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@actions/exec": "1.1.1",
-    "@commitlint/cli": "17.6.5",
+    "@commitlint/cli": "17.6.6",
     "@side/commitlint-config": "1.0.0",
     "@side/eslint-config-base": "1.0.0",
     "@side/eslint-config-jest": "1.0.0",
