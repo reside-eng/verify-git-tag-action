@@ -955,10 +955,10 @@
   dependencies:
     "@commitlint/config-conventional" "^18.0.0"
 
-"@side/eslint-config-base@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-1.0.0.tgz#4c4d5339abf215ae8d127f6031f3f32e54e7dd94"
-  integrity sha512-zKG3oP1jNZp6UF3ynHYIDWMGc6i7qsLWTmsFQAq1mV9rQxHiR0f184BB/s3pNa+NOy7rDn13XdClumq13MnNIg==
+"@side/eslint-config-base@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@side/eslint-config-base/-/eslint-config-base-2.0.2.tgz#e2776ef1947f4a13ab1424a32fea23a3561e38cd"
+  integrity sha512-qdWsy8WG6MZjF2YiwdF6wnTASkqGT/FTgHSOgwJqhHe4XUJBFAvbCVI6L/2NZ72mVzwGSXSz9PH+8AGtOY/vYg==
   dependencies:
     eslint-config-airbnb-base "^15.0.0"
     eslint-plugin-import "^2.25.2"
