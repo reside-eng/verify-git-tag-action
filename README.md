@@ -1,4 +1,4 @@
-# verify-git-tag-action
+# verify-git-tag-action (Archived)
 
 Github Action for verifying if a Git tag exists in the remote origin of the cloned repository. It takes the version from your defined package.json file, uses it against an editable tag format, and performs a search against the remote origin. If the tag exists, the action will fail. If the tag does not exist the action will succeed.
 
